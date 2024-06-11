@@ -1,8 +1,11 @@
 package com.matiastailler.domesticworkregistry;
 
 
+import com.matiastailler.exceptions.InvalidDataException;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public abstract class Person  {
@@ -10,12 +13,25 @@ public abstract class Person  {
     private String name;
     private String surname;
     private int age;
-    private ArrayList<Address> addresses;
+    private List<Address> addresses;
     private LocalDate birthdate;
     private int identificationNumber;
     private String image;
     
-    public Person(Long id, String name, String surname, int age, ArrayList<Address> addresses, LocalDate birthdate, int identificationNumber, String image) {
+    public Person(Long id, String name, String surname, int age, List<Address> addresses, LocalDate birthdate, int identificationNumber, String image) {
+        if(name == null || name.isEmpty()) {
+            throw new InvalidDataException("Name cannot be empty");
+        }
+        if(surname == null || surname.isEmpty()) {
+            throw new InvalidDataException("Surname cannot be empty");
+        }
+        if( String.valueOf(identificationNumber).length() <= 8) {
+            throw new InvalidDataException("Identification number must be at least 8 digits");
+        }
+        if(age < 0) {
+            throw new InvalidDataException("Age cannot be negative");
+        }
+
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -33,25 +49,20 @@ public abstract class Person  {
         this.identificationNumber = identificationNumber;
     }
 
+
     public Person(String name, String surname, int identificationNumber) {
-        this.name = name;
-        this.surname = surname;
-        this.identificationNumber = identificationNumber;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+        this(null, name, surname, 0, null, null, identificationNumber, null);
     }
 
     public String getName() {
+
         return name;
     }
 
     public void setName(String name) {
+        if(name == null || name.isEmpty()) {
+            throw new InvalidDataException("Name cannot be empty");
+        }
         this.name = name;
     }
 
@@ -60,6 +71,9 @@ public abstract class Person  {
     }
 
     public void setSurname(String surname) {
+        if(surname == null || surname.isEmpty()) {
+            throw new InvalidDataException("Surname cannot be empty");
+        }
         this.surname = surname;
     }
 
@@ -68,7 +82,18 @@ public abstract class Person  {
     }
 
     public void setAge(int age) {
+        if(age < 0) {
+            throw new InvalidDataException("Age cannot be negative");
+        }
         this.age = age;
+    }
+
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(ArrayList<Address> addresses) {
+        this.addresses = addresses;
     }
 
     public LocalDate getBirthdate() {
@@ -84,6 +109,9 @@ public abstract class Person  {
     }
 
     public void setIdentificationNumber(int identificationNumber) {
+        if( String.valueOf(identificationNumber).length() <= 8) {
+            throw new InvalidDataException("Identification number must be at least 8 digits");
+        }
         this.identificationNumber = identificationNumber;
     }
 
@@ -93,13 +121,5 @@ public abstract class Person  {
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    public ArrayList<Address> getAddresses() {
-        return addresses;
-    }
-
-    public void setAddresses(ArrayList<Address> addresses) {
-        this.addresses = addresses;
     }
 }

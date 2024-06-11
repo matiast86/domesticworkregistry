@@ -31,6 +31,10 @@ public class Job {
         calculateTotalFee();
     }
 
+    public Job(Employer employer, Employee employee, LocalDate date, LocalTime startTime, LocalTime endTime, Double hourlyRate, Double transportationFee) {
+        this(null, employer,employee,date,startTime,endTime,hourlyRate,transportationFee);
+    }
+
     private void calculateHoursWorked() {
         long minutes = ChronoUnit.MINUTES.between(startTime, endTime);
         double fractionalHours = minutes / 60.0; // Convert minutes to hours

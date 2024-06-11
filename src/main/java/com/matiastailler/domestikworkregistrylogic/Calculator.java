@@ -12,6 +12,8 @@ import java.util.List;
 public class Calculator {
 
 
+    //Calculate total hours worked by the same employee
+
     public Double calculateTotalHours(Employer employer, Employee employee) {
         List<Job> employeeJobs = employer.getJobsByEmployee(employee);
         if (employeeJobs.isEmpty()) {
@@ -22,6 +24,7 @@ public class Calculator {
                 .sum();
     }
 
+    //Calculate how many hours a certain employee worked in a specific month
     public Double calculateHoursByMonth(Employer employer, Employee employee, int year, int month) {
         List<Job> employeeJobs = employer.getJobsByEmployee(employee);
         if (employeeJobs.isEmpty()) {
@@ -33,6 +36,7 @@ public class Calculator {
                 .sum();
     }
 
+    //Calculates the total fee paid to a specific employee
     public Double calculateTotalFee(Employer employer, Employee employee) {
         List<Job> employeeJobs = employer.getJobsByEmployee(employee);
         if (employeeJobs.isEmpty()) {
@@ -43,6 +47,7 @@ public class Calculator {
                 .sum();
     }
 
+    //Calculate total fee in a specific month
     public Double calculateTotalFeeByMonth(Employer employer, Employee employee, int year, int month) {
         List<Job> employeeJobs = employer.getJobsByEmployee(employee);
         if (employeeJobs.isEmpty()) {
@@ -54,6 +59,7 @@ public class Calculator {
                 .sum();
     }
 
+    //Calculate fee before adding transportation
     public Double calculatePartialFee(Employer employer, Employee employee) {
         List<Job> employeeJobs = employer.getJobsByEmployee(employee);
         Double partialFee = 0.0;
@@ -63,6 +69,7 @@ public class Calculator {
         return partialFee;
     }
 
+    //Calculate fee before adding transportation in a specific month
     public Double calculatePartialFeeByMonth(Employer employer, Employee employee, int year, int month) {
         List<Job> employeeJobs = employer.getJobsByEmployee(employee);
         Double partialFee = 0.0;
@@ -75,6 +82,7 @@ public class Calculator {
         return partialFee;
     }
 
+    //Calculate the sum of hourly fees needed to calculate the average
     public Double calculateTotalHourlyFee(Employer employer, Employee employee) {
         List<Job> employeeJobs = employer.getJobsByEmployee(employee);
         Double totalFee = 0.0;
@@ -84,6 +92,7 @@ public class Calculator {
         return totalFee;
     }
 
+    //Calculate the average of the hourly fees
     public Double calculateAverageHourlyFee(Employer employer, Employee employee) {
         List<Job> employeeJobs = employer.getJobsByEmployee(employee);
         Double averageHourlyFee = 0.0;
@@ -95,6 +104,7 @@ public class Calculator {
         return averageHourlyFee;
     }
 
+    //Calculate the average of hourly fee in a year
     public Double calculateAverageHourlyFeeByYear(Employer employer, Employee employee, int year, int month) {
         List<Job> employeeJobs = employer.getJobsByEmployee(employee);
         Double averageHourlyFee = 0.0;
@@ -109,6 +119,7 @@ public class Calculator {
         return averageHourlyFee;
     }
 
+    //Calculate transportation fee
     public Double calculateTransportationFee(Employer employer, Employee employee) {
         List<Job> employeeJobs = employer.getJobsByEmployee(employee);
         Double totalTransportation = 0.0;
@@ -118,6 +129,7 @@ public class Calculator {
         return totalTransportation;
     }
 
+    //Calculate transportation fee in a month
     public Double calculateTransportationFeeByMonth(Employer employer, Employee employee, int year, int month) {
         List<Job> employeeJobs = employer.getJobsByEmployee(employee);
         Double totalTransportation = 0.0;

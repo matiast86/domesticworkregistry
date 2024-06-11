@@ -1,6 +1,7 @@
 package com.matiastailler.domesticworkregistry;
 
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 
@@ -10,16 +11,31 @@ public abstract class Person  {
     private String surname;
     private int age;
     private ArrayList<Address> addresses;
-    private String birthdate;
-    private String identificationNumber;
+    private LocalDate birthdate;
+    private int identificationNumber;
+    private String image;
     
-    public Person(Long id, String name, String surname, int age, ArrayList<Address> addresses, String birthdate, String identificationNumber) {
+    public Person(Long id, String name, String surname, int age, ArrayList<Address> addresses, LocalDate birthdate, int identificationNumber, String image) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.age = age;
         this.addresses = addresses;
         this.birthdate = birthdate;
+        this.identificationNumber = identificationNumber;
+        this.image = image;
+    }
+
+    public Person(Long id, String name, String surname, int identificationNumber) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.identificationNumber = identificationNumber;
+    }
+
+    public Person(String name, String surname, int identificationNumber) {
+        this.name = name;
+        this.surname = surname;
         this.identificationNumber = identificationNumber;
     }
 
@@ -55,23 +71,35 @@ public abstract class Person  {
         this.age = age;
     }
 
-    public String getBirthdate() {
+    public LocalDate getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(String birthdate) {
+    public void setBirthdate(LocalDate birthdate) {
         this.birthdate = birthdate;
     }
 
-    public String getIdentificationNumber() {
+    public int getIdentificationNumber() {
         return identificationNumber;
     }
 
-    public void setIdentificationNumber(String identificationNumber) {
+    public void setIdentificationNumber(int identificationNumber) {
         this.identificationNumber = identificationNumber;
     }
 
-    
+    public String getImage() {
+        return image;
+    }
 
-    
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public ArrayList<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(ArrayList<Address> addresses) {
+        this.addresses = addresses;
+    }
 }

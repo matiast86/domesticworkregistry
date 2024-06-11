@@ -8,11 +8,19 @@ public class Employer extends Person {
     private ArrayList<Employee> employees;
     private ArrayList<Job> jobs;
 
-    public Employer(Long id, String name, String surname, int age, ArrayList<Address> addresses, String birthdate,
-                    String identificationNumber, ArrayList<Employee> employees, ArrayList<Job> jobs) {
-        super(id, name, surname, age, addresses, birthdate, identificationNumber);
+    public Employer(Long id, String name, String surname, int age, ArrayList<Address> addresses, LocalDate birthdate,
+                    int identificationNumber, String image, ArrayList<Employee> employees, ArrayList<Job> jobs) {
+        super(id, name, surname, age, addresses, birthdate, identificationNumber, image);
         this.employees = new ArrayList<>();
         this.setJobs(new ArrayList<>());
+    }
+
+    public Employer(Long id,String name, String surname, int identificationNumber) {
+        super(id, name, surname, identificationNumber);
+    }
+
+    public Employer(String name, String surname, int identificationNumber) {
+        super(name, surname, identificationNumber);
     }
 
     public ArrayList<Employee> getEmployees() {
@@ -44,6 +52,17 @@ public class Employer extends Person {
     	this.jobs.add(job);
     	return job;
     	
+    }
+
+    public ArrayList<Job> getJobsByEmployee(Employee employee) {
+        ArrayList<Job> employeeJobs = new ArrayList<>();
+        for (Job job : this.jobs) {
+            if (job.getEmployee().equals(employee)) {
+                employeeJobs.add(job);
+            }
+        }
+        return employeeJobs;
+
     }
 
 

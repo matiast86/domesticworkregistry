@@ -2,12 +2,12 @@ package com.matiastailler.domesticworkregistry;
 
 public class Address {
     private String street;
-    private String number;
+    private int number;
     private String city;
     private String postalCode;
     private String country;
 
-    public Address(String street, String number, String city, String postalCode, String country) {
+    public Address(String street, int number, String city, String postalCode, String country) {
         this.street = street;
         this.number = number;
         this.city = city;
@@ -23,11 +23,11 @@ public class Address {
         this.street = street;
     }
 
-    public String getNumber() {
+    public int getNumber() {
         return number;
     }
 
-    public void setNumber(String number) {
+    public void setNumber(int number) {
         this.number = number;
     }
 

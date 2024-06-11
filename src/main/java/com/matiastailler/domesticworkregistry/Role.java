@@ -1,5 +1,5 @@
 package com.matiastailler.domesticworkregistry;
 
 public enum Role {
-    Nanny, House_Kepper
+    Nanny, House_Keeper
 }
